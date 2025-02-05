@@ -1,0 +1,26 @@
+# Text files
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+
+# Python virtual environment and environment files
+*.env text eol=lf
+
+# Handle Jupyter notebooks properly
+*.ipynb merge=union
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pkl binary
+
+# Ignore large data or model binaries
+*.pt binary
+*.h5 binary
+*.ckpt binary
+
+# Pythom Environment folder
+myenv/
+
