@@ -1,3 +1,7 @@
+Certainly! Let's refine the README to ensure it accurately reflects the setup and execution process, including both manual steps and the use of a Jupyter Notebook for an interactive walkthrough. Here's the updated README:
+
+---
+
 # GPU-Powered BERT Fine-Tuning
 
 ## Introduction
@@ -5,7 +9,9 @@ This project demonstrates efficient fine-tuning of BERT models utilizing CUDA-po
 
 ## Setup
 
-### Creating a Virtual Environment
+### Option 1: Manual Setup
+
+#### Creating a Virtual Environment
 To ensure a clean and isolated environment for your project, it's recommended to use a virtual environment. You can create one and activate it using the following commands:
 
 1. Create a virtual environment named `myenv`:
@@ -25,7 +31,7 @@ To ensure a clean and isolated environment for your project, it's recommended to
      source myenv/bin/activate
      ```
 
-### Installing Dependencies
+#### Installing Dependencies
 After activating the virtual environment, upgrade `pip` and install the required packages.
 
 1. Upgrade `pip` to the latest version:
@@ -40,38 +46,54 @@ After activating the virtual environment, upgrade `pip` and install the required
     pip install -r requirements.txt
     ```
 
-3. Install PyTorch and its dependencies with CUDA support. This ensures that all operations are optimized for GPU execution:
+3. Install PyTorch with CUDA Support:
+
+    Visit the [PyTorch Get Started Locally](https://pytorch.org/get-started/locally/) page to select the appropriate installation command based on your system's CUDA version. This ensures that all operations are optimized for GPU execution. For example, if you are using CUDA 11.8, you can use the following command:
 
     ```bash
     pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
     ```
 
+### Option 2: Jupyter Notebook Walkthrough
+
+For a detailed, step-by-step walkthrough of the code, you can use the `bert_finetuning_cuda_walkthrough.ipynb` Jupyter Notebook. This notebook provides an interactive way to understand and execute the code:
+
+1. Open the Jupyter Notebook:
+
+   ```bash
+   jupyter notebook bert_finetuning_cuda_walkthrough.ipynb
+   ```
+
+2. Follow the instructions and execute the cells to see the code in action.
+
 ## Execution
 
-1. **GPU Availability Check**: Ensure that your environment recognizes the GPU and its version. You can do this by running the following checks in your Python script:
+1. **GPU Availability Check**: Ensure that your environment recognizes the GPU and its version. You can do this by running the `gpu_check.py` script:
 
-    ```python
-    import torch
-    print(torch.cuda.is_available())  # Should print True if GPU is available
-    print(torch.cuda.get_device_name(0))  # Check the GPU name
+    ```bash
+    python gpu_check.py
     ```
 
 2. **Load and Fine-Tune the Model**:
-   - Load the IMDb dataset and tokenize it.
-   - Instantiate the BERT model and move it to the GPU device.
-   - Configure training parameters and fine-tune the model using `Trainer` from the Hugging Face `transformers` library.
+   - Run the `train_model.py` script to load the IMDb dataset, tokenize it, instantiate the BERT model, and fine-tune it:
 
-3. **Save and Load the Model**:
-   - Save the fine-tuned model and tokenizer.
-   - Reload the model using the `pipeline` function for text classification.
+     ```bash
+     python train_model.py
+     ```
 
-```python
-# Load the fine-tuned model
-classifier = pipeline("text-classification", model="fine_tuned_bert", device=0 if torch.cuda.is_available() else -1)
-```
+3. **Streamlit Dashboard**:
+   - Launch the Streamlit app to interact with the fine-tuned model:
+
+     ```bash
+     streamlit run dashboard.py
+     ```
 
 ## Conclusion
 
 This guide facilitates swift and effective fine-tuning of BERT models on GPU-enabled systems, significantly reducing training time. Additionally, this setup demonstrates best practices for managing Python dependencies using virtual environments.
 
-By following this README, you will be able to reproduce the results and adapt the methods for other models or datasets as needed.
+By following this README, you will be able to reproduce the results and adapt the methods for other models or datasets as needed. If you encounter any issues or have questions, please refer to the documentation or reach out for support.
+
+---
+
+This README provides clear instructions for setting up the environment manually or using a Jupyter Notebook for an interactive experience. Adjust any specific paths or commands as needed based on your project's structure. If you have any further questions or need additional customization, feel free to ask!
