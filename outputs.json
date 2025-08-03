@@ -1,0 +1,19 @@
+{
+    "fine-tune": [
+        {
+            "stage": "Baseline (Before Fine-Tuning)",
+            "description": "Directly used bert-base-uncased pretrained model on raw dataset (no fine-tuning)",
+            "model_used": "Bert (Pretrained)",
+            "accuracy": 52.4
+
+        },
+
+        {
+            "stage": "Fine-Tuning (Raw data)",
+            "description": "Fine-tuned BERT on dataset without additional preprocessing",
+            "model_used": "Bert (Fine-Tuned)",
+            "accuracy": 89.4
+
+        }
+    ]
+}

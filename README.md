@@ -1,7 +1,3 @@
-Certainly! Let's refine the README to ensure it accurately reflects the setup and execution process, including both manual steps and the use of a Jupyter Notebook for an interactive walkthrough. Here's the updated README:
-
----
-
 # GPU-Powered BERT Fine-Tuning
 
 ## Introduction
@@ -88,6 +84,13 @@ For a detailed, step-by-step walkthrough of the code, you can use the `bert_fine
      streamlit run dashboard.py
      ```
 
+## Outputs
+<!--start-->
+| Stage                         | Description                                                                      | Model Used        | Accuracy   |
+|-------------------------------|----------------------------------------------------------------------------------|-------------------|------------|
+| Baseline (Before Fine-Tuning) | Directly used bert-base-uncased pretrained model on raw dataset (no fine-tuning) | Bert (Pretrained) | 52.4%      |
+| Fine-Tuning (Raw data)        | Fine-tuned BERT on dataset without additional preprocessing                      | Bert (Fine-Tuned) | 89.4%      |
+<!--stop-->
 ## Conclusion
 
 This guide facilitates swift and effective fine-tuning of BERT models on GPU-enabled systems, significantly reducing training time. Additionally, this setup demonstrates best practices for managing Python dependencies using virtual environments.
